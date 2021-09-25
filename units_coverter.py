@@ -4,12 +4,11 @@
 print('Absorbing radiation converter is launched!')
 
 unit = int(input('Print your unit in Gy format: ', ))
-out_format = input('Print to which format do you want to convert (mGy, mcrGy, cGy, rad): ', )
+out_format = input('Print to which format do you want to convert (mGy, mcrGy, rad): ', )
 
 absorb = {
         'mGy' : lambda unit: unit / 1000,
         'mcrGy' : lambda unit: unit / 1000000,
-        'cGy' : lambda unit: unit / 10000,
         'rad' : lambda unit: unit / 10000,
         }
 
