@@ -1,4 +1,3 @@
-
 #This scripts will convert absorbing radiation units:
 
 print('Absorbing radiation converter is launched!')
