@@ -28,7 +28,7 @@ class LinkedList:
 		current = self.__head
 		found  = False
 		while current:
-			if current.value == value or value in current.value:
+			if current.value == value:
 				found = True
 				break
 			current = current.get_next()
@@ -47,7 +47,7 @@ class LinkedList:
 				self.__tail.set_next(new_item)
 			self.__tail = new_item
 		elif index < 0:
-			raise IndexError('Index should not be negative!')
+			raise IndexError("Invalid index. Should be >= 0!")
 		elif index > self.__len:
 			raise IndexError("Index out of range!")
 		elif index == 0:
@@ -66,8 +66,14 @@ class LinkedList:
 		return self
 
 	def extend(self, values, index=None):
-		for value in values:
-			self.add(value, index)
+		if index is None:
+			for value in values:
+				self.add(value, index)
+		else:
+			i = index
+			for value in values:
+				self.add(value, index=i)
+				i += 1
 		return self
 
 	def first(self):
@@ -82,7 +88,7 @@ class LinkedList:
 		if index is None:
 			index = self.__len - 1
 		if index < 1:
-			raise ValueError("Index is not valid!")
+			raise ValueError("Invalid index. Should be >= 0!")
 		if index > self.__len:
 			raise IndexError("Index out of range!")
 		# convenient to operate by values
@@ -122,7 +128,7 @@ class LinkedList:
 		#	current = current.get_next()
 		#return prev
 
-	def list_iterator(self):
+	def list_iterable(self):
 		current = self.__head
 		if not current:
 			return []
@@ -131,6 +137,8 @@ class LinkedList:
 			l_list.append(current.value)
 			current = current.get_next()
 		return l_list
+
+
 
 if __name__ == "__main__":
 	items = LinkedList()

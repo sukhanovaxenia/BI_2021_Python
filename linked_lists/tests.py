@@ -36,6 +36,18 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual("two", current.__getitem__(1))
         self.assertEqual("bang!", current.last())
 
+    def test_extend_at(self):
+        values = ["one", "two", "bang!"]
+        current = self.linked_list
+        current.extend(values)
+        add_values = [1, 2, 3]
+        current.extend(add_values, index=1)
+        self.assertEqual(6, current.__len__())
+        self.assertEqual("one", current.first())
+        self.assertEqual(1, current.__getitem__(1))
+        self.assertEqual(2, current.__getitem__(2))
+        self.assertEqual("bang!", current.last())
+
     def test_pop(self):
         current = self.linked_list
         current.extend([1, 2, 3, "out", 4, 5])
